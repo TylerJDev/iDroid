@@ -66,7 +66,6 @@ function parseHTMLData(data) {
 			if (!eleChild.replace(char, '').length) {
 				return false;
 			}
-
 			return true;
 		}
 
@@ -81,12 +80,13 @@ function parseHTMLData(data) {
 
 		// Used to parse text the contains entire conversation, instead of broken up into multiple elements
 		function checkText(text) {
-			var textWithColon = text.split(' ').filter(currentWord => currentWord.indexOf(':') >= 0);
+			//var textWithColon = text.split(' ').filter(currentWord => currentWord.indexOf(':') >= 0);
 			// Split text by \n
-			textWithColon = textWithColon.join(' ').split('\n').join(' ').split(' ');
+			//textWithColon = textWithColon.join(' ').split('\n').join(' ').split(' ');
 
 			var linesParsed = text.split('\n')
-			var popped = linesParsed.pop();
+			linesParsed.pop();
+
 			linesParsed = linesParsed.map(x => [x.substr(0, x.indexOf(':') + 1), x.substr(x.indexOf(':') + 1, x.length).trim()]);
 			if (linesParsed.length > 1) {
 				return [true, linesParsed];
@@ -97,7 +97,7 @@ function parseHTMLData(data) {
 
 		/* Sub Topic */
 		currentIndexes.map(function(currIndex) {
-			var count = 1;
+			//var count = 1;
 			var currElems = dataObj['elements_from_start'];
 			var mostRecentSubTopic = '';
 
@@ -138,17 +138,58 @@ function parseHTMLData(data) {
 			});
 		});
 
-		console.log(characters);
 		console.log(treeStructure);
-		console.log(textPara);
 	}
 
 	addTreeStructure();
 	dataObj['tree_structure'] = treeStructure;
+
+	displayData(dataObj);
 	return dataObj;
 }
 
 loadData();
+
+// Function used to display the data visually on the page
+function displayData(data) {
+	// Add the "parent topic" to the first column
+	Object.keys(data['tree_structure'].parentTopic).map(currTopic => $('#column_1').append(`<button class="topic_tape">${currTopic}</button>`));
+
+	$('.topic_tape').click(function() {
+		// Remove "active" class from previously selected button(s)
+		$('.active_topic').removeClass('active_topic');
+
+		// Get the topic name
+		var this_topic = $(this).text();
+
+		// Clear the subtopic column
+		$('#column_2').empty();
+		Object.keys(data['tree_structure'].parentTopic[this_topic]).map(currSubTopic => $('#column_2').append(`<button class="topic_tape">${currSubTopic}</button>`));
+
+		// Add "active" class
+		$(this).addClass('active_topic');
+	});
+
+	// Accessibility
+	$('#main_body').on('keydown', 'button.topic_tape', function(currKeyPressed) {
+		var parentColumn = $(this).parent().siblings().eq(0);
+		if (currKeyPressed.keyCode === 37 || currKeyPressed.keyCode === 39) {
+			// Focus first child button of parentColumn
+			parentColumn.children('button.topic_tape').eq(0).focus();
+		}
+	});
+
+	$('#column_2').on('click', 'button.topic_tape', function() {
+		var this_parent_topic = $('.active_topic').text();
+		// Play the tape
+		playTheTape(data['tree_structure'].parentTopic[this_parent_topic][$(this).text()]);
+	});
+}
+
+function playTheTape(tape_arr) {
+	console.log(tape_arr);
+}
+
 
 try {
   module.exports = {parseHTMLData};

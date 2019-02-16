@@ -4,3 +4,6 @@
 	1.3. Click the "try it out", once that is ran, the response body SHOULD display JSON which contains the article searched for, keep the ID
 2. Split the data up by sections
 
+To-Do
+1. represent data visually on the page
+2. add proper accessibility

@@ -1,7 +1,9 @@
 {
   "name": "mgsv_tapes",
   "jest": {
-    "setupFiles": ["./setup-jest.js"]
+    "setupFiles": [
+      "./setup-jest.js"
+    ]
   },
   "version": "1.0.0",
   "description": "1. Try loading content from the Wikia, Document how it's done. Content: (https://metalgear.fandom.com/wiki/Metal_Gear_Solid_V:_The_Phantom_Pain_cassette_transcripts)\r \t1.1. Go to the Wikia API, i.e, wiki url (metalgear.fandom.com/api/vi/)\r \t1.2. Go to the /Search > Do search for given phase, and make sure that phase is the article title\r \t1.3. Click the \"try it out\", once that is ran, the response body SHOULD display JSON which contains the article searched for, keep the ID",
@@ -12,7 +14,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "^5.14.0",
     "jest": "^24.1.0",
     "jquery": "^3.3.1"
-  }
+  },
+  "dependencies": {}
 }
