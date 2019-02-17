@@ -5,5 +5,4 @@
 2. Split the data up by sections
 
 To-Do
-1. represent data visually on the page
-2. add proper accessibility
+1. Create tests for playTheTape, ensure that sentences are properly split, rename var x to something proper

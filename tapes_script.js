@@ -186,8 +186,41 @@ function displayData(data) {
 	});
 }
 
-function playTheTape(tape_arr) {
-	console.log(tape_arr);
+function playTheTape(tapeArr) {
+	// Split the tape conversations into sentences if exceeds x amount
+	var x = tapeArr.map(function(currArrItem) {
+		var currentKey = Object.keys(currArrItem[0]);
+		var currentConvo = ''; // Return this
+
+		// If exceeds x amount ..
+		if (currArrItem[0][currentKey].length > 150) {
+			var splitBy = currArrItem[0][currentKey].split('. '); // Split by 'sentence. '
+			var splitArr = []; // Holds the sentences
+			var currCount = 0; // Keeps track of map function
+
+			splitBy.map(function(currSentence) {
+				//.log(currSentence[0]);
+				if (currSentence[0] === currSentence[0].toLowerCase()) {
+					splitArr[currCount] = splitArr[currCount] + ' ' + currSentence;
+				} else {
+					splitArr.push(currSentence);
+					currCount += 1;
+				}
+			});
+
+			return splitArr;
+		} else {
+			return currArrItem[0][currentKey];
+		}
+	});
+
+	console.log(x);
+	console.log(tapeArr);
+	// Get current speaker
+	var currentSpeaker = Object.keys(tapeArr[0][0])[0];
+
+	// Append content to "text box"
+	$('.current_text').text(currentSpeaker + ' ' + tapeArr[0][0][currentSpeaker]);
 }
 
 
