@@ -196,25 +196,46 @@ function playTheTape(tapeArr) {
 		if (currArrItem[0][currentKey].length > 150) {
 			var splitBy = currArrItem[0][currentKey].split('. '); // Split by 'sentence. '
 			var splitArr = []; // Holds the sentences
-			var currCount = 0; // Keeps track of map function
+			var currCount = -1; // Keeps track of map function
 
 			splitBy.map(function(currSentence) {
 				//.log(currSentence[0]);
 				if (currSentence[0] === currSentence[0].toLowerCase()) {
-					splitArr[currCount] = splitArr[currCount] + ' ' + currSentence;
+					if (splitArr[currCount] !== undefined) {
+						splitArr[currCount] = [currentKey[0], splitArr[currCount] + ' ' + currSentence + '.'];
+
+						// Remove duplicate name
+						var currReg = new RegExp(currentKey[0] + ',', 'gi');
+						splitArr[currCount][1] = splitArr[currCount][1].replace(currReg, '');
+
+					}
 				} else {
-					splitArr.push(currSentence);
+					splitArr.push([currentKey[0], currSentence + '.']);
 					currCount += 1;
 				}
 			});
 
 			return splitArr;
 		} else {
-			return currArrItem[0][currentKey];
+			return [currentKey[0], currArrItem[0][currentKey]];
 		}
 	});
 
+	//console.log(x);
+
+	// Flatten the array
+	var newArr = [];
 	console.log(x);
+	x.filter(function(curr) {
+		//if (curr.length > 2) {
+		if (typeof curr[0] === 'object') {
+			curr.map(x => newArr.push(x));
+		} else {
+			newArr.push(curr);
+		}
+	});
+
+	console.log(newArr);
 	console.log(tapeArr);
 	// Get current speaker
 	var currentSpeaker = Object.keys(tapeArr[0][0])[0];
