@@ -284,3 +284,10 @@ button.active_topic {
 .btn_settings {
   display: flex;
 }
+
+@media only screen and (max-height: 670px) {
+  #dialogueBox h2.current_text {
+    background-color: #58686ccc;
+    margin: 0px 50px 0px 50px;
+  }
+}
