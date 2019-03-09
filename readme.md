@@ -8,6 +8,3 @@ To see the ongoing development of this project, please visit this repository's _
 
 ## Tests
 .. To be added
-
-Things to do
-12. Allow the tape to be clicked again to start over
