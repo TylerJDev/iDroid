@@ -211,7 +211,6 @@ function playTheTape(tapeArr) {
 	// Split the tape conversations into sentences if exceeds x amount
 	var splitConvo = tapeArr.map(function(currArrItem) {
 		var currentKey = Object.keys(currArrItem[0]);
-		var currentConvo = ''; // Return this
 
 		// If exceeds x amount ..
 		if (currArrItem[0][currentKey].length > 150) {
@@ -284,7 +283,6 @@ function playTheTape(tapeArr) {
 	// On click of dialogue box, change text
 
 	function changeText(subtract=false) {
-		console.log(currentDialogueCount);
 		if (currentDialogueCount < newArr.length) {
 			if (subtract && currentDialogueCount !== 0) {
 				currentDialogueCount--;
@@ -306,8 +304,6 @@ function playTheTape(tapeArr) {
 	$('#dialogueBox  > .inner_box').click(function() {
 		changeText();
 	});
-
-	var backCount = currentDialogueCount;
 
 	$('#back_btn').click(function() {
 		changeText(true);
@@ -353,6 +349,15 @@ function playTheTape(tapeArr) {
 		$('#current_time').text(`${currHour}${colon}${currMins}`);
 	}, 1000)
 })();
+
+// Replicate behavior of pressing "continue" button
+$('body').on('keydown', function(curr_key) {
+	if (curr_key.keyCode === 13) {
+		if (!$('#activeToContinue').hasClass('disabled_control')) {
+			$('#activeToContinue').click();
+		}
+	}
+});
 
 
 try {
