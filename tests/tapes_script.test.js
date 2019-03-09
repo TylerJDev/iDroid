@@ -1,5 +1,5 @@
-const plugin = require('./tapes_script.js');
-const data = require('./data.js');
+const plugin = require('../scripts/tapes_script.js');
+const data = require('../scripts/data.js');
 
 // Test parsing of correct sections
 describe('Parse specific sections', () => {
