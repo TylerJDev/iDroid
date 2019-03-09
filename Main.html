@@ -6,16 +6,87 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link href="Main.css" rel="stylesheet">
 </head>
 
 <body>
   <div id="container">
+    <div id="idroid_ver">
+      <h2>iDROID VER 3.02</h2>
+      <h3>CASSETTE TAPES</h3>
+    </div>
     <div id="main_body">
       <div id="column_1" class="column">
+        <div class="top_column">
+          <div role="tablist" id="main_tablist">
+            <button role="tab" aria-selected="true" class="tape_tab" aria-label="tapes">
+              <i class="fas fa-scroll"></i>
+            </button>
+            <button role="tab" class="tape_tab" aria-label="music" tabindex="-1" aria-hidden="true">
+              <i class="fas fa-music"></i>
+            </button>
+            <button role="tab" class="tape_tab" aria-label="tasks" tabindex="-1" aria-hidden="true">
+              <i class="fas fa-check"></i>
+            </button>
+          </div>
+
+          <div role="tabpanel" id="main_tabpanel">
+            <h1 id="tab_heading">Info</h1>
+            <p>Listen to tape recordings of relevant intel</p>
+          </div>
+          <h3 class="default_heading">CASSETTE TAPES</h3>
+        </div>
+        <div id="column_1_tapes" class="column_tapes"></div>
       </div>
 
+
       <div id="column_2" class="column">
+        <div class="top_column">
+          <div id="media_box">
+            <div id="media_box_headings">
+              <h2>SELECTED CASSETTE TAPE</h2>
+              <h3><i class="fas fa-caret-left"></i> To Control Panel</h3>
+            </div>
+
+            <div id="tapes_playing">
+              <div id="current_tape">
+                <h2 id="current_tape_heading">
+                  CURRENT TAPE PLAYING
+                </h2>
+              </div>
+
+              <div id="current_sub_tape">
+                <h2 id="current_sub_tape_heading">
+                  TAPE PLAYING
+                </h2>
+              </div>
+
+              <div id="progress_container">
+                <i id="progress_audio" class="fas fa-volume-off"></i>
+                <div id="progress_bar_container">
+                  <div id="progress">
+                    <div id="progress_current"></div>
+                  </div>
+                </div>
+                <p id="current_progress"><span id="current_now">0</span>/<span id="current_length">0</span></p>
+              </div>
+            </div>
+
+            <div id="media_controls">
+              <button id="back_btn" class="media_control_btn" aria-label="back"><i class="fas fa-backward"></i></button>
+              <button class="media_control_btn disabled" aria-label="pause" aria-label="replay" tabindex="-1" aria-hidden="true"><i class="fas fa-pause"></i></button>
+              <button id="stop_btn" class="media_control_btn" aria-label="stop"><i class="fas fa-stop"></i></button>
+              <button class="media_control_btn disabled" aria-label="forward" tabindex="-1" aria-hidden="true"><i class="fas fa-forward"></i></button>
+              <button class="media_control_btn disabled" aria-label="replay" tabindex="-1" aria-hidden="true"><i class="fas fa-retweet"></i></button>
+              <button class="media_control_btn" aria-label="captions"><i class="far fa-closed-captioning"></i></button>
+              <button class="media_control_btn disabled" aria-label="audio" tabindex="-1" aria-hidden="true"><i class="fas fa-volume-down"></i></button>
+            </div>
+
+          </div>
+        </div>
+        <div id="column_2_tapes" class="column_tapes"></div>
       </div>
     </div>
   </div>
@@ -23,7 +94,27 @@
 
   <div id="dialogueBox">
     <div class="inner_box">
-      <h2 class="current_text">Testing text here, please hold.</h2>
+      <h2 class="current_text"></h2>
+    </div>
+    <div id="box_settings">
+      <div class="btn_settings">
+        <button id="activeToStop" class="control_btn disabled_control" tabindex="-1" aria-hidden="true"><span class="keyboard_key disabled_control">[ SPACE ]</span> Stop</button>
+        <button id="activeToContinue" class="control_btn disabled_control" tabindex="-1" aria-hidden="true"><span class="keyboard_key disabled_control">[ ENTER ]</span> Continue</button>
+      </div>
+      <div class="stats_settings">
+        <div class="stats_section">
+          <p>TIME</p>
+          <p id="current_time">22:48</p>
+        </div>
+        <div class="stats_section">
+          <p>GMP</p>
+          <p>999999</p>
+        </div>
+        <div class="stats_section">
+          <p>HEROISM</p>
+          <p>999999</p>
+        </div>
+      </div>
     </div>
   </div>
   <script src="tapes_script.js"></script>

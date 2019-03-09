@@ -4,5 +4,12 @@
 	1.3. Click the "try it out", once that is ran, the response body SHOULD display JSON which contains the article searched for, keep the ID
 2. Split the data up by sections
 
-To-Do
-1. Create tests for playTheTape, ensure that sentences are properly split, rename var x to something proper
+Things to do
+7. Add cassette tape to background (OPTIONAL)
+9. Refactor (Ongoing)
+10. Add to GitHub repo
+11. Add working play/pause/forward/back button(s)
+	1. Back btn goes back one
+	2. Stop button stops (Same as STOP)
+	3. forward button goes forward one
+12. Allow the tape to be clicked again to start over
