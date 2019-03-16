@@ -12,3 +12,9 @@ To see the ongoing development of this project, please visit this repository's _
 
 Things to do
 12. Allow the tape to be clicked again to start over
+
+# How to use
+Select a "Cassette tape" by activating a button in the left column
+Play the tape by selecting the category of the tape in the right column
+Read through the tape by pressing enter, or click within the message body
+Stop the tape by pressing space, or clicking the "Stop" button

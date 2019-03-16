@@ -169,10 +169,18 @@ function displayData(data) {
 
 	// Accessibility
 	$('#main_body').on('keydown', 'button.topic_tape', function(currKeyPressed) {
-		var parentColumn = $(this).parent().siblings().eq(0);
+		var parentColumn = $(this).parents('.column').siblings().eq(0);
 		if (currKeyPressed.keyCode === 37 || currKeyPressed.keyCode === 39) {
-			// Focus first child button of parentColumn
-			parentColumn.children('button.topic_tape').eq(0).focus();
+			// Focus first child button of parentColumn || current selected element
+			var focusTo = parentColumn.find('button.active_topic');
+
+			if (!focusTo.length) {
+				focusTo = parentColumn.find('button.topic_tape').eq(0);
+			}
+
+			focusTo.focus();
+			console.log(parentColumn.find('button.topic_tape').eq(0));
+			currKeyPressed.preventDefault();
 		}
 	});
 
@@ -359,6 +367,14 @@ $('body').on('keydown', function(curr_key) {
 	}
 });
 
+// Replicate behavior of pressing "S" button
+$('body').on('keydown', function(curr_key) {
+	if (curr_key.keyCode === 32) {
+		if (!$('#activeToStop').hasClass('disabled_control')) {
+			$('#activeToStop').click();
+		}
+	}
+});
 
 try {
 	module.exports = {parseHTMLData};
