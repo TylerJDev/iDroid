@@ -1,20 +1,17 @@
 # MGSV - Tapes
-A fun project built in dedication of Metal Gear Solid V: The Phantom Pain.
-Based on the iDROID in MGSV, where the player can listen to various "recordings". I tried to recreate this feature by using the same transcripts that were in these recordings.
+A fun project based on the amazing Metal Gear Solid V: The Phantom Pain.
+The idea is on the iDROID in MGSV, a feature that lets the player listen to various recordings in-game.
 
-###### ! ** NOTE ** This project may contain spoilers for Metal Gear Solid V !
+This is a web-based recreation of the iDROID, using the same transcripts that were in these recordings.
 
-# Ongoing Development
-To see the ongoing development of this project, please visit this repository's _'Project Development Board'_ in the projects section
+[Demo Link](https://codepen.io/TylerJDev/pen/pYwVoW)
 
-# Tests
-.. To be added
+###### **NOTE:** This project may contain spoilers for Metal Gear Solid V!
 
-Things to do
-12. Allow the tape to be clicked again to start over
+Take a look at the [*'Project Development Board'*](https://github.com/TylerJDev/MGSV-Tapes/projects/1) to view its progress.
 
 # How to use
-* Select a "Cassette tape" by activating a button in the left column
-* Play the tape by selecting the category of the tape in the right column
-* Read through the tape by pressing enter, or click within the message body
-* Stop the tape by pressing space, or clicking the "Stop" button
+1. Activate a "Cassette tape" using the button on the left column
+2. Select and play a tape on the right column.
+3. Read through the tape by pressing `[enter]` or clicking within the subtitle
+4. Stop the tape by pressing `[space]` or "Stop" button
